@@ -1,0 +1,20 @@
+@{
+    ViewBag.Title = "Países";
+    var paises = ViewBag.Paises as List<TP_JJOO.Models.Pais>;
+}
+
+<h2>Listado de Países</h2>
+<div class="row">
+    @foreach(var pais in paises)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="@pais.BanderaURL" class="card-img-top" alt="Bandera de @pais.Nombre" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@pais.Nombre</h5>
+                    <a href="@Url.Action("VerDetallePais", "Home", new { idPais = pais.IdPais })" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

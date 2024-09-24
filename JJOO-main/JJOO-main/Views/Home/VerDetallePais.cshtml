@@ -1,0 +1,24 @@
+@{
+    ViewBag.Title = "Detalle de País";
+    var pais = ViewBag.Pais as TP_JJOO.Models.Pais;
+    var deportistas = ViewBag.Deportistas as List<TP_JJOO.Models.Deportista>;
+}
+
+<h2>@pais.Nombre</h2>
+<img src="@pais.BanderaURL" alt="Bandera de @pais.Nombre" class="img-fluid mb-4" style="max-height: 200px;">
+
+<h3>Deportistas que representan a @pais.Nombre</h3>
+<div class="row">
+    @foreach(var dep in deportistas)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="@dep.ImagenURL" class="card-img-top" alt="@dep.Nombre @dep.Apellido" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@dep.Nombre @dep.Apellido</h5>
+                    <a href="@Url.Action("VerDetalleDeportista", "Home", new { idDeportista = dep.IdDeportista })" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
